@@ -1,4 +1,28 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+<div class="page-header">
+  <h2>EVE Database</h2>
+  <p class="muted">Restful JSONp API</p>
+</div>
+<p class="lead"><b>Current Dataset:</b> Incursion 1.2</p>
+<h5>API V1</h5>
+<div class="well">
+  <div class="row-fluid">
+    <div class="span3">
+      <ul>
+        <li>Maps/
+          <ul>
+            <li><%= link_to 'Denormalize', api_v1_map_denormalize_index_path %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3">
+      <ul>
+        <li>Inventory/
+          <ul>
+            <li><%= link_to 'Type', api_v1_inventory_type_index_path %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
