@@ -1,4 +1,5 @@
 class Api::V1::Map::DenormalizeController < ApplicationController
+  caches_action :show, :expires_in => 1.hour
 
   def show
     begin
