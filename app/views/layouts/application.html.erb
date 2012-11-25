@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Evedb" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Eve SQL" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Evedb" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -23,5 +23,11 @@
         <%= yield %>
       </div>
     </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Designed and built by <a href="https://gate.eveonline.com/Profile/blue%20coeur" target="_blank">blue coeur</a></p>
+        <p class="muted">&copy; <%= Time.new.year %> Kyle Simukka. All other trademarks or registered trademarks are the property of their respective owners.</p>
+      </div>
+    </footer>
   </body>
 </html>
