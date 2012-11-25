@@ -1,25 +1,186 @@
 <div class="page-header">
-  <h2>EVE Database</h2>
-  <p class="muted">Restful JSONp API</p>
+  <h2>Cloud Hosted EVE Database <small class="mt15 pull-right"><b>Current Dataset:</b> Incursion 1.2</small></h2>
 </div>
-<p class="lead"><b>Current Dataset:</b> Incursion 1.2</p>
-<h5>API V1</h5>
-<div class="well">
+<p class="lead">Eve SQL is a highly available, cross-cloud, restful API service that allows you quick and easy information retrieval from the Eve database.</p>
+<div class="row-fluid" id="api-overview">
+  <div class="page-header">
+    <h3>API<h3>
+  </div>
+  <ul class="nav nav-pills" id="api-status">
+    <li class="active"><a href="#" data-api="all">All</a></li>
+    <li><a href="#" data-api="true">Available</a></li>
+  </ul>
   <div class="row-fluid">
-    <div class="span3">
+    <div class="span3 well well-small">
       <ul>
-        <li>Maps/
+        <li>Agent/
           <ul>
-            <li><%= link_to 'Denormalize', api_v1_map_denormalize_index_path %>
+            <li class="muted">Agents</li>
+            <li class="muted">AgentTypes</li>
+            <li class="muted">ResearchAgents</li>
           </ul>
         </li>
       </ul>
     </div>
-    <div class="span3">
+    <div class="span3 well well-small">
+      <ul>
+        <li>Character/
+          <ul>
+            <li class="muted">Ancestries</li>
+            <li class="muted">Attributes</li>
+            <li class="muted">Bloodlines</li>
+            <li class="muted">Factions</li>
+            <li class="muted">Races</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3 well well-small">
+      <ul>
+        <li>Corporation/
+          <ul>
+            <li class="muted">Activities</li>
+            <li class="muted">NPC/
+              <ul>
+                <li class="muted">CorporationDivisions</li>
+                <li class="muted">CorporationResearchFields</li>
+                <li class="muted">Corporations</li>
+                <li class="muted">CorporationTrades</li>
+                <li class="muted">Divisions</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3 well well-small">
+      <ul>
+        <li>Certificate/
+          <ul>
+            <li class="muted">Categories</li>
+            <li class="muted">Certificates</li>
+            <li class="muted">Classes</li>
+            <li class="muted">Recommendations</li>
+            <li class="muted">Relationships</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span3 well well-small">
+      <ul>
+        <li>Dogma/
+          <ul>
+            <li class="muted">AttributeCategories</li>
+            <li class="muted">AttributeTypes</li>
+            <li class="muted">Effects</li>
+            <li class="muted">TypeAttributes</li>
+            <li class="muted">TypeEffects</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3 well well-small">
+      <ul>
+        <li>Eve/
+          <ul>
+            <li class="muted">Graphics</li>
+            <li class="muted">Icons</li>
+            <li class="muted">Units</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3 well well-small">
       <ul>
         <li>Inventory/
           <ul>
+            <li class="muted">BlueprintTypes</li>
+            <li class="muted">Categories</li>
+            <li class="muted">ContrabandTypes</li>
+            <li class="muted">ControlTowerResourcePurposes</li>
+            <li class="muted">ControlTowerResources</li>
+            <li class="muted">Flags</li>
+            <li class="muted">Groups</li>
+            <li class="muted">Items</li>
+            <li class="muted">MarketGroups</li>
+            <li class="muted">MetaGroups</li>
+            <li class="muted">MetaTypes</li>
+            <li class="muted">Names</li>
+            <li class="muted">Positions</li>
+            <li class="muted">TypeMaterials</li>
+            <li class="muted">TypeReactions</li>
             <li><%= link_to 'Type', api_v1_inventory_type_index_path %></li>
+            <li class="muted">UniqueNames</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3 well well-small">
+      <ul>
+        <li>Map/
+          <ul>
+            <li class="muted">CelestialStatistics</li>
+            <li class="muted">ConstellationJumps</li>
+            <li class="muted">Constellations</li>
+            <li><%= link_to 'Denormalize', api_v1_map_denormalize_index_path %></li>
+            <li class="muted">Jumps</li>
+            <li class="muted">Landmarks</li>
+            <li class="muted">LocationScenes</li>
+            <li class="muted">LocationWormholeClasses</li>
+            <li class="muted">RegionJumps</li>
+            <li class="muted">Regions</li>
+            <li class="muted">SolarSystemJumps</li>
+            <li class="muted">SolarSystems</li>
+            <li class="muted">Universe</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span3 well well-small">
+      <ul>
+        <li>Planet/
+          <ul>
+            <li class="muted">Schematics</li>
+            <li class="muted">SchematicsPinMap</li>
+            <li class="muted">SchematicsTypeMap</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3 well well-small">
+      <ul>
+        <li>Station/
+          <ul>
+            <li class="muted">Operations</li>
+            <li class="muted">OperationServices</li>
+            <li class="muted">Services</li>
+            <li class="muted">Stations</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3 well well-small">
+      <ul>
+        <li>Translation/
+          <ul>
+            <li class="muted">Tables</li>
+            <li class="muted">TranslationColumns</li>
+            <li class="muted">TranslationLanguages</li>
+            <li class="muted">Translations</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span3 well well-small">
+      <ul>
+        <li>War/
+          <ul>
+            <li class="muted">CombatZones</li>
+            <li class="muted">CombatZoneSystems</li>
           </ul>
         </li>
       </ul>

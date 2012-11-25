@@ -14,7 +14,8 @@
     border-left: none;
   }
 }
-.section {
-  margin: 10px 0;
-  display: inline-block;
+#api {
+  .muted {
+    @include opacity(.5);
+  }
 }

@@ -1,5 +1,5 @@
 class Api::V1::Map::DenormalizeController < ApplicationController
-  caches_action :show, :expires_in => 1.hour
+  before_filter :api_auth
 
   def show
     begin
@@ -11,6 +11,7 @@ class Api::V1::Map::DenormalizeController < ApplicationController
     respond_to do |format|
       format.html
       format.json {render json: @response, :callback => params[:callback]}
+      format.xml {render xml: @response }
     end
   end
 end

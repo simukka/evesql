@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2 class="">api/v1/map/denormalize/<span class="text-info">:itemId</span>.json</h2>
+  <h2 class="">api/v1/map/denormalize/<span class="text-info">:itemId</span>.<span class="text-info">:format</span></h2>
 </div>
 <div class="row-fluid">
   <h4>Input</h4>
@@ -17,12 +17,13 @@
         <td>int</td>
         <td>the itemID</td>
       </tr>
+      <%= render 'api/input' %>
     </tbody>
   </table>
 </div>
 <div class="row-fluid section">
   <h4>Example</h4>
-   <div class="code-group"><span class="badge badge-success">Get:</span><code>/api/v1/map/denormalize/10000001.json?callback=evedb</code></div>
+   <div class="code-group"><span class="badge badge-success">Get:</span><code>/api/v1/map/denormalize/10000001.json?token=138cdcb016f8d58bf8f07560206abb2acallback=evedb</code></div>
    <pre class="pre-scrollable">evedb({"celestialIndex":null,"constellationID":null,"groupID":3,"itemID":10000001,"itemName":"Derelik","orbitID":null,"orbitIndex":null,"radius":38009740755086700.0,"regionID":null,"security":null,"solarSystemID":null,"typeID":3,"x":-77361951922776900.0,"y":50878032664301900.0,"z":-64433101266115400.0})</pre>
 </div>
 <div class="row-fluid section">

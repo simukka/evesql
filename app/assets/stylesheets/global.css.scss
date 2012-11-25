@@ -1,3 +1,28 @@
+$green: #4ECDC4;
+$red: #C44D58;
+$pink: #FF6B6B;
+$yellow: #C7F464;
+$navbarBackground: #C44D58;
+$navbarBackgroundHighlight: #FF6B6B;
+$navbarBrandColor: #222;
+$navbarLinkColor: #eee;
+$textColor: #444;
+
 @import "bootstrap";
-body { padding-top: 60px; }
+body { padding-top: 80px; }
 @import "bootstrap-responsive";
+
+.navbar {
+  border-top: 4px solid #556270;
+  .brand {
+    color: rgba(0,0,0,.3);
+    font-weight: 600;
+  }
+}
+.mt15 {
+  margin-top: 15px;
+}
+.section {
+  margin: 10px 0;
+  display: inline-block;
+}

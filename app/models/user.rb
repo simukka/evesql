@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_one :apikey, :class_name => 'ApiKey'
+
   rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -11,5 +13,15 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :token_authenticatable
 
-  has_many :rest_client
+  after_create :create_apikey
+  after_create :default_role
+
+  private
+  def create_apikey
+    ApiKey.create!(:user_id => self.id)
+  end
+
+  def default_role
+    self.add_role :basic
+  end
 end

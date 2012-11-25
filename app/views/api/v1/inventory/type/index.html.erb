@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2 class="">api/v1/inventory/type/<span class="text-info">:typeID</span>.json</h2>
+  <h2 class="">api/v1/inventory/type/<span class="text-info">:typeID</span>.<span class="text-info">:format</span></h2>
 </div>
 <div class="row-fluid">
   <h4>Input</h4>
@@ -17,12 +17,13 @@
         <td>int</td>
         <td>the typeID</td>
       </tr>
+      <%= render 'api/input' %>
     </tbody>
   </table>
 </div>
 <div class="row-fluid section">
   <h4>Example</h4>
-   <div class="code-group"><span class="badge badge-success">Get:</span><code>/api/v1/inventory/type/233.json?callback=evedb</code></div>
+   <div class="code-group"><span class="badge badge-success">Get:</span><code>/api/v1/inventory/type/233.json?token=138cdcb016f8d58bf8f07560206abb2a&callback=evedb</code></div>
    <pre class="pre-scrollable">evedb({"basePrice":"4000.0","capacity":0.0,"chanceOfDuplicating":0.07,"description":"Consists of two components: a shell of titanium and a core of iridium atoms suspended in plasma state. Railguns launch the shell directly, while particle blasters pump the plasma into a cyclotron and process the plasma into a bolt that is then fired.   ","groupID":85,"iconID":1326,"marketGroupID":106,"mass":0.1,"portionSize":100,"published":1,"raceID":null,"typeID":233,"typeName":"Iridium Charge L","volume":0.025})</pre>
 </div>
 <div class="row-fluid section">
@@ -39,6 +40,7 @@
       <tr>
         <td>basePrice</td>
         <td>decimal</td>
+        <td></td>
       </tr>
       <tr>
         <td>capacity</td>

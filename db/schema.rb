@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119233758) do
+ActiveRecord::Schema.define(:version => 20121125035939) do
+
+  create_table "api_keys", :force => true do |t|
+    t.string   "access_token"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "usage_count"
+  end
 
   create_table "crt_certificates", :primary_key => "certificateID", :force => true do |t|
     t.integer  "categoryID"
@@ -27,43 +35,39 @@ ActiveRecord::Schema.define(:version => 20121119233758) do
   add_index "crt_certificates", ["categoryID"], :name => "crtCertificates_IX_category"
   add_index "crt_certificates", ["classID"], :name => "crtCertificates_IX_class"
 
-  create_table "invtypes", :primary_key => "typeID", :force => true do |t|
-    t.integer  "groupID"
-    t.string   "typeName",            :limit => 100
-    t.string   "description",         :limit => 3000
-    t.float    "mass"
-    t.float    "volume"
-    t.float    "capacity"
-    t.integer  "portionSize"
-    t.integer  "raceID"
-    t.decimal  "basePrice",                           :precision => 19, :scale => 4
-    t.integer  "published"
-    t.integer  "marketGroupID"
-    t.float    "chanceOfDuplicating"
-    t.integer  "iconID"
-    t.datetime "created_at",                                                         :null => false
-    t.datetime "updated_at",                                                         :null => false
+  create_table "invTypes", :primary_key => "typeID", :force => true do |t|
+    t.integer "groupID"
+    t.string  "typeName",            :limit => 100
+    t.string  "description",         :limit => 3000
+    t.float   "mass"
+    t.float   "volume"
+    t.float   "capacity"
+    t.integer "portionSize"
+    t.integer "raceID"
+    t.decimal "basePrice",                           :precision => 19, :scale => 4
+    t.integer "published"
+    t.integer "marketGroupID"
+    t.float   "chanceOfDuplicating"
+    t.integer "iconID"
   end
 
   add_index "invtypes", ["groupID"], :name => "invTypes_IX_Group"
 
-  create_table "mapdenormalize", :primary_key => "itemID", :force => true do |t|
-    t.integer  "typeID"
-    t.integer  "groupID"
-    t.integer  "solarSystemID"
-    t.integer  "constellationID"
-    t.integer  "regionID"
-    t.integer  "orbitID"
-    t.float    "x"
-    t.float    "y"
-    t.float    "z"
-    t.float    "radius"
-    t.string   "itemName",        :limit => 100
-    t.float    "security"
-    t.integer  "celestialIndex"
-    t.integer  "orbitIndex"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+  create_table "mapDenormalize", :primary_key => "itemID", :force => true do |t|
+    t.integer "typeID"
+    t.integer "groupID"
+    t.integer "solarSystemID"
+    t.integer "constellationID"
+    t.integer "regionID"
+    t.integer "orbitID"
+    t.float   "x"
+    t.float   "y"
+    t.float   "z"
+    t.float   "radius"
+    t.string  "itemName",        :limit => 100
+    t.float   "security"
+    t.integer "celestialIndex"
+    t.integer "orbitIndex"
   end
 
   add_index "mapdenormalize", ["constellationID"], :name => "mapDenormalize_IX_constellation"
@@ -74,23 +78,13 @@ ActiveRecord::Schema.define(:version => 20121119233758) do
   add_index "mapdenormalize", ["regionID"], :name => "mapDenormalize_IX_region"
   add_index "mapdenormalize", ["solarSystemID"], :name => "mapDenormalize_IX_system"
 
-  create_table "rest_clients", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.text     "description"
-    t.string   "api_key"
-    t.string   "secret"
-    t.boolean  "is_master"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
     t.string   "resource_type"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "max_usage"
   end
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
@@ -107,13 +101,11 @@ ActiveRecord::Schema.define(:version => 20121119233758) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "authentication_token"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
   end
 
-  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
