@@ -37,10 +37,10 @@
   border-left: none;
 }
 
-/* line 17, ../../app/assets/stylesheets/api.css.scss */
-.section {
-  margin: 10px 0;
-  display: inline-block;
+/* line 18, ../../app/assets/stylesheets/api.css.scss */
+#api .muted {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
 }
 /*
  * Bootstrap v2.2.1
@@ -197,7 +197,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #333333;
+  color: #444444;
   background-color: white;
 }
 
@@ -1704,7 +1704,7 @@ select:focus:required:invalid:focus {
 /* line 401, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_forms.scss */
 .help-block,
 .help-inline {
-  color: #595959;
+  color: #6a6a6a;
 }
 
 /* line 405, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_forms.scss */
@@ -1794,8 +1794,8 @@ select:focus:required:invalid:focus {
 /* line 469, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_forms.scss */
 .input-append .active,
 .input-prepend .active {
-  background-color: #a9dba9;
-  border-color: #46a546;
+  background-color: #c5efec;
+  border-color: #4ecdc4;
 }
 
 /* line 477, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_forms.scss */
@@ -4628,15 +4628,15 @@ input[type="submit"].btn.btn-mini {
   min-height: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, white, #f2f2f2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#f2f2f2));
-  background-image: -webkit-linear-gradient(top, white, #f2f2f2);
-  background-image: -o-linear-gradient(top, white, #f2f2f2);
-  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  background-color: #e85f63;
+  background-image: -moz-linear-gradient(top, #ff6b6b, #c44d58);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff6b6b), to(#c44d58));
+  background-image: -webkit-linear-gradient(top, #ff6b6b, #c44d58);
+  background-image: -o-linear-gradient(top, #ff6b6b, #c44d58);
+  background-image: linear-gradient(to bottom, #ff6b6b, #c44d58);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF2F2F2', GradientType=0);
-  border: 1px solid #d4d4d4;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFF6B6B', endColorstr='#FFC44D58', GradientType=0);
+  border: 1px solid #9f353f;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -4675,8 +4675,8 @@ input[type="submit"].btn.btn-mini {
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
-  color: #777777;
-  text-shadow: 0 1px 0 white;
+  color: #222222;
+  text-shadow: 0 1px 0 #ff6b6b;
 }
 /* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar .brand:hover {
@@ -4691,7 +4691,7 @@ input[type="submit"].btn.btn-mini {
 
 /* line 74, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-link {
-  color: #777777;
+  color: #eeeeee;
 }
 /* line 76, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-link:hover {
@@ -4702,8 +4702,8 @@ input[type="submit"].btn.btn-mini {
 .navbar .divider-vertical {
   height: 40px;
   margin: 0 9px;
-  border-left: 1px solid #f2f2f2;
-  border-right: 1px solid white;
+  border-left: 1px solid #c44d58;
+  border-right: 1px solid #ff6b6b;
 }
 
 /* line 93, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_navbar.scss */
@@ -4884,9 +4884,9 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > li > a {
   float: none;
   padding: 10px 15px 10px;
-  color: #777777;
+  color: #eeeeee;
   text-decoration: none;
-  text-shadow: 0 1px 0 white;
+  text-shadow: 0 1px 0 #ff6b6b;
 }
 
 /* line 246, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_navbar.scss */
@@ -4908,7 +4908,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > .active > a:focus {
   color: #555555;
   text-decoration: none;
-  background-color: #e6e6e6;
+  background-color: #ba3e49;
   -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
   -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
@@ -4923,17 +4923,17 @@ input[type="submit"].btn.btn-mini {
   margin-right: 5px;
   color: white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #ededed;
-  background-image: -moz-linear-gradient(top, #f2f2f2, #e5e5e5);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f2f2), to(#e5e5e5));
-  background-image: -webkit-linear-gradient(top, #f2f2f2, #e5e5e5);
-  background-image: -o-linear-gradient(top, #f2f2f2, #e5e5e5);
-  background-image: linear-gradient(to bottom, #f2f2f2, #e5e5e5);
+  background-color: #e44a4e;
+  background-image: -moz-linear-gradient(top, #ff5252, #b93d49);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff5252), to(#b93d49));
+  background-image: -webkit-linear-gradient(top, #ff5252, #b93d49);
+  background-image: -o-linear-gradient(top, #ff5252, #b93d49);
+  background-image: linear-gradient(to bottom, #ff5252, #b93d49);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF2F2F2', endColorstr='#FFE5E5E5', GradientType=0);
-  border-color: #e5e5e5 #e5e5e5 #bfbfbf;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFF5252', endColorstr='#FFB93D49', GradientType=0);
+  border-color: #b93d49 #b93d49 #7f2a32;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #e5e5e5;
+  *background-color: #b93d49;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
@@ -4943,12 +4943,12 @@ input[type="submit"].btn.btn-mini {
 /* line 496, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_mixins.scss */
 .navbar .btn-navbar:hover, .navbar .btn-navbar:active, .navbar .btn-navbar.active, .navbar .btn-navbar.disabled, .navbar .btn-navbar[disabled] {
   color: white;
-  background-color: #e5e5e5;
-  *background-color: #d8d8d8;
+  background-color: #b93d49;
+  *background-color: #a63741;
 }
 /* line 504, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_mixins.scss */
 .navbar .btn-navbar:active, .navbar .btn-navbar.active {
-  background-color: #cbcbcb \9;
+  background-color: #93313a \9;
 }
 
 /* line 279, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_navbar.scss */
@@ -5014,14 +5014,14 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-  background-color: #e6e6e6;
+  background-color: #ba3e49;
   color: #555555;
 }
 
 /* line 344, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
-  border-top-color: #777777;
-  border-bottom-color: #777777;
+  border-top-color: #eeeeee;
+  border-bottom-color: #eeeeee;
 }
 
 /* line 350, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_navbar.scss */
@@ -6502,9 +6502,9 @@ a.label:hover, a.badge:hover {
   box-sizing: border-box;
 }
 
-/* line 2, ../../app/assets/stylesheets/global.css.scss */
+/* line 12, ../../app/assets/stylesheets/global.css.scss */
 body {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 /*
@@ -7839,7 +7839,7 @@ body {
   .nav-collapse .dropdown-menu a {
     padding: 9px 15px;
     font-weight: bold;
-    color: #777777;
+    color: #eeeeee;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -7862,7 +7862,7 @@ body {
   /* line 84, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_responsive-navbar.scss */
   .nav-collapse .nav > li > a:hover,
   .nav-collapse .dropdown-menu a:hover {
-    background-color: #f2f2f2;
+    background-color: #c44d58;
   }
 
   /* line 88, ../../../../../.rvm/gems/ruby-1.9.2-p290@evedb/gems/bootstrap-sass-2.2.1.1/vendor/assets/stylesheets/bootstrap/_responsive-navbar.scss */
@@ -7930,8 +7930,8 @@ body {
     float: none;
     padding: 10px 15px;
     margin: 10px 0;
-    border-top: 1px solid #f2f2f2;
-    border-bottom: 1px solid #f2f2f2;
+    border-top: 1px solid #c44d58;
+    border-bottom: 1px solid #c44d58;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -7974,4 +7974,36 @@ body {
     height: auto !important;
     overflow: visible !important;
   }
+}
+/* line 15, ../../app/assets/stylesheets/global.css.scss */
+.navbar {
+  border-top: 4px solid #556270;
+}
+/* line 17, ../../app/assets/stylesheets/global.css.scss */
+.navbar .brand {
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+}
+
+/* line 22, ../../app/assets/stylesheets/global.css.scss */
+.mt15 {
+  margin-top: 15px;
+}
+
+/* line 25, ../../app/assets/stylesheets/global.css.scss */
+.section {
+  margin: 10px 0;
+  display: inline-block;
+}
+
+/* line 29, ../../app/assets/stylesheets/global.css.scss */
+.footer {
+  padding: 30px 0;
+  margin-top: 70px;
+  border-top: 1px solid #E5E5E5;
+  background-color: whiteSmoke;
+}
+/* line 34, ../../app/assets/stylesheets/global.css.scss */
+.footer p {
+  margin: 0px;
 }

@@ -1,4 +1,6 @@
 ---
+grey.png: grey.png
+grey/index.png: grey.png
 application.js: application.js
 application/index.js: application.js
 application.css: application.css
