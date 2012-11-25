@@ -15,4 +15,6 @@ gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
-gem "restful_api_authentication"
+gem "newrelic_rpm"
+gem 'rack-jsonp'
+gem 'rack-cors'

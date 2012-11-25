@@ -6,6 +6,8 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
+require 'rack/jsonp'
+require 'rack/cors'
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -17,10 +19,15 @@ end
 
 module Evedb
   class Application < Rails::Application
+    # JSONP Support
+    config.middleware.use Rack::JSONP
 
-    config.generators do |g|
-      
-      
+    # Cors support
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '/api/*', :headers => :any, :methods => [:get]
+      end
     end
 
     # Settings in config/environments/* take precedence over those specified here.
