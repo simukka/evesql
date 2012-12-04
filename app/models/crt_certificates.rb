@@ -1,3 +1,4 @@
 class CrtCertificates < ActiveRecord::Base
-  # attr_accessible :title, :body
+  self.table_name = "crtCertificates"
+  self.primary_key = "certificateID"
 end

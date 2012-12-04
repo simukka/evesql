@@ -18,6 +18,9 @@ Evedb::Application.routes.draw do
       namespace :inventory do
         resources :type, :only => [:index,:show]
       end
+      namespace :certificate do
+        resources :categories, :certificates, :classes, :recommendations, :relationships, :only => [:index,:show]
+      end
     end
   end
 

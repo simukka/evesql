@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125035939) do
+ActiveRecord::Schema.define(:version => 20121204171757) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -19,6 +19,28 @@ ActiveRecord::Schema.define(:version => 20121125035939) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "usage_count"
+  end
+
+  create_table "crtCategories", :primary_key => "categoryID", :force => true do |t|
+    t.string "description",  :limit => 500
+    t.string "categoryName", :limit => 256
+  end
+
+  create_table "crtCertificates", :primary_key => "certificateID", :force => true do |t|
+    t.integer "categoryID"
+    t.integer "classID"
+    t.integer "grade"
+    t.integer "corpID"
+    t.integer "iconID"
+    t.string  "description", :limit => 500
+  end
+
+  add_index "crtcertificates", ["categoryID"], :name => "crtCertificates_IX_category"
+  add_index "crtcertificates", ["classID"], :name => "crtCertificates_IX_class"
+
+  create_table "crtClasses", :primary_key => "classID", :force => true do |t|
+    t.string "description", :limit => 500
+    t.string "className",   :limit => 256
   end
 
   create_table "crt_certificates", :primary_key => "certificateID", :force => true do |t|
@@ -34,6 +56,25 @@ ActiveRecord::Schema.define(:version => 20121125035939) do
 
   add_index "crt_certificates", ["categoryID"], :name => "crtCertificates_IX_category"
   add_index "crt_certificates", ["classID"], :name => "crtCertificates_IX_class"
+
+  create_table "crtrecommendations", :primary_key => "recommendationID", :force => true do |t|
+    t.integer "shipTypeID"
+    t.integer "certificateID"
+    t.integer "recommendationLevel", :default => 0, :null => false
+  end
+
+  add_index "crtrecommendations", ["certificateID"], :name => "crtRecommendations_IX_certifica"
+  add_index "crtrecommendations", ["shipTypeID"], :name => "crtRecommendations_IX_shipType"
+
+  create_table "crtrelationships", :primary_key => "relationshipID", :force => true do |t|
+    t.integer "parentID"
+    t.integer "parentTypeID"
+    t.integer "parentLevel"
+    t.integer "childID"
+  end
+
+  add_index "crtrelationships", ["childID"], :name => "crtRelationships_IX_child"
+  add_index "crtrelationships", ["parentID"], :name => "crtRelationships_IX_parent"
 
   create_table "invTypes", :primary_key => "typeID", :force => true do |t|
     t.integer "groupID"
