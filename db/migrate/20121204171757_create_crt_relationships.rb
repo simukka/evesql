@@ -7,7 +7,7 @@ class CreateCrtRelationships < ActiveRecord::Migration
       t.integer "childID"
     end
 
-    add_index "crtrelationships", ["childID"], :name => "crtRelationships_IX_child"
-    add_index "crtrelationships", ["parentID"], :name => "crtRelationships_IX_parent"
+    add_index "crtRelationships", ["childID"], :name => "crtRelationships_IX_child"
+    add_index "crtRelationships", ["parentID"], :name => "crtRelationships_IX_parent"
   end
 end

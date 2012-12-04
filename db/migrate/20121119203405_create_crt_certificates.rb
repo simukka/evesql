@@ -9,7 +9,7 @@ class CreateCrtCertificates < ActiveRecord::Migration
       t.string  "description", :limit => 500
     end
 
-    add_index "crtcertificates", ["categoryID"], :name => "crtCertificates_IX_category"
-    add_index "crtcertificates", ["classID"], :name => "crtCertificates_IX_class"
+    add_index "crtCertificates", ["categoryID"], :name => "crtCertificates_IX_category"
+    add_index "crtCertificates", ["classID"], :name => "crtCertificates_IX_class"
   end
 end

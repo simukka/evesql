@@ -6,7 +6,7 @@ class CreateCrtRecommendations < ActiveRecord::Migration
       t.integer "recommendationLevel", :default => 0, :null => false
     end
 
-    add_index "crtrecommendations", ["certificateID"], :name => "crtRecommendations_IX_certifica"
-    add_index "crtrecommendations", ["shipTypeID"], :name => "crtRecommendations_IX_shipType"
+    add_index "crtRecommendations", ["certificateID"], :name => "crtRecommendations_IX_certifica"
+    add_index "crtRecommendations", ["shipTypeID"], :name => "crtRecommendations_IX_shipType"
   end
 end
