@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(:version => 20121204171757) do
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "usage_count"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "usage_count",  :default => 0
   end
 
   create_table "crtCategories", :primary_key => "categoryID", :force => true do |t|
@@ -26,7 +26,12 @@ ActiveRecord::Schema.define(:version => 20121204171757) do
     t.string "categoryName", :limit => 256
   end
 
-  create_table "crtCertificates", :primary_key => "certificateID", :force => true do |t|
+  create_table "crtClasses", :primary_key => "classID", :force => true do |t|
+    t.string "description", :limit => 500
+    t.string "className",   :limit => 256
+  end
+
+  create_table "crtcertificates", :primary_key => "certificateID", :force => true do |t|
     t.integer "categoryID"
     t.integer "classID"
     t.integer "grade"
@@ -37,25 +42,6 @@ ActiveRecord::Schema.define(:version => 20121204171757) do
 
   add_index "crtcertificates", ["categoryID"], :name => "crtCertificates_IX_category"
   add_index "crtcertificates", ["classID"], :name => "crtCertificates_IX_class"
-
-  create_table "crtClasses", :primary_key => "classID", :force => true do |t|
-    t.string "description", :limit => 500
-    t.string "className",   :limit => 256
-  end
-
-  create_table "crt_certificates", :primary_key => "certificateID", :force => true do |t|
-    t.integer  "categoryID"
-    t.integer  "classID"
-    t.integer  "grade"
-    t.integer  "corpID"
-    t.integer  "iconID"
-    t.string   "description", :limit => 500
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-  end
-
-  add_index "crt_certificates", ["categoryID"], :name => "crtCertificates_IX_category"
-  add_index "crt_certificates", ["classID"], :name => "crtCertificates_IX_class"
 
   create_table "crtrecommendations", :primary_key => "recommendationID", :force => true do |t|
     t.integer "shipTypeID"
@@ -76,39 +62,43 @@ ActiveRecord::Schema.define(:version => 20121204171757) do
   add_index "crtrelationships", ["childID"], :name => "crtRelationships_IX_child"
   add_index "crtrelationships", ["parentID"], :name => "crtRelationships_IX_parent"
 
-  create_table "invTypes", :primary_key => "typeID", :force => true do |t|
-    t.integer "groupID"
-    t.string  "typeName",            :limit => 100
-    t.string  "description",         :limit => 3000
-    t.float   "mass"
-    t.float   "volume"
-    t.float   "capacity"
-    t.integer "portionSize"
-    t.integer "raceID"
-    t.decimal "basePrice",                           :precision => 19, :scale => 4
-    t.integer "published"
-    t.integer "marketGroupID"
-    t.float   "chanceOfDuplicating"
-    t.integer "iconID"
+  create_table "invtypes", :primary_key => "typeID", :force => true do |t|
+    t.integer  "groupID"
+    t.string   "typeName",            :limit => 100
+    t.string   "description",         :limit => 3000
+    t.float    "mass"
+    t.float    "volume"
+    t.float    "capacity"
+    t.integer  "portionSize"
+    t.integer  "raceID"
+    t.decimal  "basePrice",                           :precision => 19, :scale => 4
+    t.integer  "published"
+    t.integer  "marketGroupID"
+    t.float    "chanceOfDuplicating"
+    t.integer  "iconID"
+    t.datetime "created_at",                                                         :null => false
+    t.datetime "updated_at",                                                         :null => false
   end
 
   add_index "invtypes", ["groupID"], :name => "invTypes_IX_Group"
 
-  create_table "mapDenormalize", :primary_key => "itemID", :force => true do |t|
-    t.integer "typeID"
-    t.integer "groupID"
-    t.integer "solarSystemID"
-    t.integer "constellationID"
-    t.integer "regionID"
-    t.integer "orbitID"
-    t.float   "x"
-    t.float   "y"
-    t.float   "z"
-    t.float   "radius"
-    t.string  "itemName",        :limit => 100
-    t.float   "security"
-    t.integer "celestialIndex"
-    t.integer "orbitIndex"
+  create_table "mapdenormalize", :primary_key => "itemID", :force => true do |t|
+    t.integer  "typeID"
+    t.integer  "groupID"
+    t.integer  "solarSystemID"
+    t.integer  "constellationID"
+    t.integer  "regionID"
+    t.integer  "orbitID"
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.float    "radius"
+    t.string   "itemName",        :limit => 100
+    t.float    "security"
+    t.integer  "celestialIndex"
+    t.integer  "orbitIndex"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "mapdenormalize", ["constellationID"], :name => "mapDenormalize_IX_constellation"
