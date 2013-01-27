@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204171757) do
+ActiveRecord::Schema.define(:version => 20130127224312) do
+
+  create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
+    t.string "agentType", :limit => 50
+  end
+
+  create_table "agtagents", :primary_key => "agentID", :force => true do |t|
+    t.integer "divisionID"
+    t.integer "corporationID"
+    t.integer "locationID"
+    t.integer "level"
+    t.integer "quality",       :limit => 2
+    t.integer "agentTypeID"
+    t.integer "isLocator"
+  end
+
+  add_index "agtagents", ["corporationID"], :name => "agtAgents_IX_corporation"
+  add_index "agtagents", ["locationID"], :name => "agtAgents_IX_station"
+
+  create_table "agtresearchagents", :id => false, :force => true do |t|
+    t.integer "agentID", :null => false
+    t.integer "typeID",  :null => false
+  end
+
+  add_index "agtresearchagents", ["typeID"], :name => "agtResearchAgents_IX_type"
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -61,6 +85,22 @@ ActiveRecord::Schema.define(:version => 20121204171757) do
 
   add_index "crtrelationships", ["childID"], :name => "crtRelationships_IX_child"
   add_index "crtrelationships", ["parentID"], :name => "crtRelationships_IX_parent"
+
+  create_table "invGroups", :primary_key => "groupID", :force => true do |t|
+    t.integer "categoryID"
+    t.string  "groupName",            :limit => 100
+    t.string  "description",          :limit => 3000
+    t.integer "iconID"
+    t.integer "useBasePrice"
+    t.integer "allowManufacture"
+    t.integer "allowRecycler"
+    t.integer "anchored"
+    t.integer "anchorable"
+    t.integer "fittableNonSingleton"
+    t.integer "published"
+  end
+
+  add_index "invgroups", ["categoryID"], :name => "invGroups_IX_category"
 
   create_table "invtypes", :primary_key => "typeID", :force => true do |t|
     t.integer  "groupID"
