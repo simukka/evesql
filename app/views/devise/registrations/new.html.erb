@@ -1,10 +1,14 @@
-<h2>Sign up</h2>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :name, :autofocus => true %> 
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :required => true %>
-  <%= f.input :password_confirmation, :required => true %>
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
-<% end %>
-<%= render "devise/shared/links" %>
+<div class="span8 offset2">
+  <div class="page-header">
+    <h2>1. Register</h2>
+  </div>
+  <p class="lead">After you register, you'll recieve access to the APIs.</p>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal' }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name, :autofocus => true %>
+    <%= f.input :email, :required => true %>
+    <%= f.input :password, :required => true %>
+    <%= f.input :password_confirmation, :required => true %>
+    <%= f.button :submit, 'Register', :class => 'btn-primary btn-large pull-right' %>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
-  <div class="row-fluid">
-    <div class="span6">
-      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
-        <h4>Account</h4>
+<div class="span8 offset2">
+  <div class="page-header">
+    <h3>Account</h3>
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
         <%= f.error_notification %>
         <%= f.input :name, :autofocus => true %>
         <%= f.input :email, :required => true %>
@@ -13,24 +13,5 @@
         <%= f.button :submit, 'Update', :class => 'btn-primary pull-right' %>
         </div>
       <% end %>
-    </div>
-    <div class="span6">
-      <h4>API Access</h4>
-      <div class="control-group">
-        <label class="control-label" for="token">Token</label>
-        <div class="controls">
-          <span class="input-xxlarge uneditable-input"><%= @user.apikey.access_token %></span>
-        </div>
-      </div>
-      <div class="row-fluid">
-        <h4>API Usage</h4>
-        <div class="well well-small">
-          Current: <b><%= @current_usage %></b> - Max: <b><%= @max_usage %></b>
-        </div>
-
-        <div class="progress">
-          <div class="bar" style="width: <%= number_to_percentage(@current_usage / @max_usage * 100, :precision => 1) %>;"></div>
-        </div>
-      </div>
-    </div>
   </div>
+</div>

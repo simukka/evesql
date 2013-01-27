@@ -4,6 +4,7 @@ Evedb::Application.routes.draw do
     delete "/logout" => "devise/sessions#destroy"
     get "/register" => "registrations#new"
     get "/account/edit" => "registrations#edit"
+    get "/account/api" => "registrations#api"
   end
 
   devise_for :users, :controllers => {:registrations => "registrations"}

@@ -1,10 +1,17 @@
 <div class="page-header">
-  <h2>Cloud Hosted EVE Database <small class="mt15 pull-right"><b>Current Dataset:</b> Incursion 1.2</small></h2>
+  <h2>Eve SQL <small>High Availability EVE Database</small><small class="mt15 pull-right"><b>Current Dataset:</b> Incursion 1.2</small></h2>
 </div>
-<p class="lead">Eve SQL is a highly available, cross-cloud, restful API service that allows you quick and easy information retrieval from the Eve database.</p>
+<div class="row-fluid">
+  <div class="span9">
+    <p class="lead">We do all the heavy lifting so your app doesn't have to. Eve SQL provides a responsive public API to the current Eve database for quick and easy information retrival.</p>
+  </div>
+  <div class="span3">
+    <%= link_to 'Get Started', register_path, :class=>'btn btn-large btn-primary btn-block' %>
+  </div>
+</div>
 <div class="row-fluid" id="api-overview">
   <div class="page-header">
-    <h3>API<h3>
+    <h3>APIs<h3>
   </div>
   <ul class="nav nav-pills" id="api-status">
     <li class="active"><a href="#" data-api="all">All</a></li>
@@ -186,4 +193,13 @@
       </ul>
     </div>
   </div>
+</div>
+<div class="row-fluid" id="about">
+  <div class="page-header">
+    <h3>About<h3>
+  </div>
+  <h5>CCP Legal Notice</h5>
+    <div class="well well-small">
+      <p>EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP hf. is not in any way affiliated with, Eve SQL. CCP is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.</p>
+    </div>
 </div>
