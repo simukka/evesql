@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128010207) do
+ActiveRecord::Schema.define(:version => 20130128013613) do
 
   create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
     t.string "agentType", :limit => 50
@@ -285,21 +285,159 @@ ActiveRecord::Schema.define(:version => 20130128010207) do
     t.string "description", :limit => 1000
   end
 
-  create_table "invGroups", :primary_key => "groupID", :force => true do |t|
-    t.integer "categoryID"
-    t.string  "groupName",            :limit => 100
-    t.string  "description",          :limit => 3000
-    t.integer "iconID"
-    t.integer "useBasePrice"
-    t.integer "allowManufacture"
-    t.integer "allowRecycler"
-    t.integer "anchored"
-    t.integer "anchorable"
-    t.integer "fittableNonSingleton"
-    t.integer "published"
+  create_table "invBlueprintTypes", :primary_key => "blueprintTypeID", :force => true do |t|
+    t.integer  "parentBlueprintTypeID"
+    t.integer  "productTypeID"
+    t.integer  "productionTime"
+    t.integer  "techLevel",                :limit => 2
+    t.integer  "researchProductivityTime"
+    t.integer  "researchMaterialTime"
+    t.integer  "researchCopyTime"
+    t.integer  "researchTechTime"
+    t.integer  "productivityModifier"
+    t.integer  "materialModifier",         :limit => 2
+    t.integer  "wasteFactor",              :limit => 2
+    t.integer  "maxProductionLimit"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
+
+  create_table "invCategories", :primary_key => "categoryID", :force => true do |t|
+    t.string   "categoryName", :limit => 100
+    t.string   "description",  :limit => 3000
+    t.integer  "iconID"
+    t.integer  "published"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "invControlTowerResourcePurposes", :primary_key => "purpose", :force => true do |t|
+    t.string   "purposeText", :limit => 100
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "invControlTowerResources", :id => false, :force => true do |t|
+    t.integer  "controlTowerTypeID", :null => false
+    t.integer  "resourceTypeID",     :null => false
+    t.integer  "purpose"
+    t.integer  "quantity"
+    t.float    "minSecurityLevel"
+    t.integer  "factionID"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "invFlags", :primary_key => "flagID", :force => true do |t|
+    t.string   "flagName",   :limit => 200
+    t.string   "flagText",   :limit => 100
+    t.integer  "orderID"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "invMarketGroups", :primary_key => "marketGroupID", :force => true do |t|
+    t.integer  "parentGroupID"
+    t.string   "marketGroupName", :limit => 100
+    t.string   "description",     :limit => 3000
+    t.integer  "iconID"
+    t.integer  "hasTypes"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "invMetaGroups", :primary_key => "metaGroupID", :force => true do |t|
+    t.string   "metaGroupName", :limit => 100
+    t.string   "description",   :limit => 1000
+    t.integer  "iconID"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "invMetaTypes", :primary_key => "typeID", :force => true do |t|
+    t.integer  "parentTypeID"
+    t.integer  "metaGroupID",  :limit => 2
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "invNames", :primary_key => "itemID", :force => true do |t|
+    t.string   "itemName",   :limit => 200, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "invPositions", :primary_key => "itemID", :force => true do |t|
+    t.float    "x",          :default => 0.0, :null => false
+    t.float    "y",          :default => 0.0, :null => false
+    t.float    "z",          :default => 0.0, :null => false
+    t.float    "yaw"
+    t.float    "pitch"
+    t.float    "roll"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "invTypeMaterials", :id => false, :force => true do |t|
+    t.integer  "typeID",                        :null => false
+    t.integer  "materialTypeID",                :null => false
+    t.integer  "quantity",       :default => 0, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "invTypeReactions", :id => false, :force => true do |t|
+    t.integer  "reactionTypeID",              :null => false
+    t.integer  "input",                       :null => false
+    t.integer  "typeID",                      :null => false
+    t.integer  "quantity",       :limit => 2
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "invcontrabandtypes", :id => false, :force => true do |t|
+    t.integer  "factionID",        :null => false
+    t.integer  "typeID",           :null => false
+    t.float    "standingLoss"
+    t.float    "confiscateMinSec"
+    t.float    "fineByValue"
+    t.float    "attackMinSec"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "invcontrabandtypes", ["typeID"], :name => "invContrabandTypes_IX_type"
+
+  create_table "invgroups", :primary_key => "groupID", :force => true do |t|
+    t.integer  "categoryID"
+    t.string   "groupName",            :limit => 100
+    t.string   "description",          :limit => 3000
+    t.integer  "iconID"
+    t.integer  "useBasePrice"
+    t.integer  "allowManufacture"
+    t.integer  "allowRecycler"
+    t.integer  "anchored"
+    t.integer  "anchorable"
+    t.integer  "fittableNonSingleton"
+    t.integer  "published"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   add_index "invgroups", ["categoryID"], :name => "invGroups_IX_category"
+
+  create_table "invitems", :primary_key => "itemID", :force => true do |t|
+    t.integer  "typeID",                  :null => false
+    t.integer  "ownerID",                 :null => false
+    t.integer  "locationID", :limit => 8, :null => false
+    t.integer  "flagID",     :limit => 2, :null => false
+    t.integer  "quantity",                :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "invitems", ["locationID"], :name => "items_IX_Location"
+  add_index "invitems", ["ownerID", "locationID"], :name => "items_IX_OwnerLocation"
 
   create_table "invtypes", :primary_key => "typeID", :force => true do |t|
     t.integer  "groupID"
@@ -320,6 +458,16 @@ ActiveRecord::Schema.define(:version => 20130128010207) do
   end
 
   add_index "invtypes", ["groupID"], :name => "invTypes_IX_Group"
+
+  create_table "invuniquenames", :primary_key => "itemID", :force => true do |t|
+    t.string   "itemName",   :limit => 200, :null => false
+    t.integer  "groupID"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "invuniquenames", ["groupID", "itemName"], :name => "invUniqueNames_IX_GroupName"
+  add_index "invuniquenames", ["itemName"], :name => "invUniqueNames_UQ", :unique => true
 
   create_table "mapdenormalize", :primary_key => "itemID", :force => true do |t|
     t.integer  "typeID"
