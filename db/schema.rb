@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128030540) do
+ActiveRecord::Schema.define(:version => 20130128031835) do
 
   create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
     t.string "agentType", :limit => 50
@@ -705,6 +705,82 @@ ActiveRecord::Schema.define(:version => 20130128030540) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "staOperationServices", :id => false, :force => true do |t|
+    t.integer  "operationID", :null => false
+    t.integer  "serviceID",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "staOperations", :primary_key => "operationID", :force => true do |t|
+    t.integer  "activityID"
+    t.string   "operationName",         :limit => 100
+    t.string   "description",           :limit => 1000
+    t.integer  "fringe"
+    t.integer  "corridor"
+    t.integer  "hub"
+    t.integer  "border"
+    t.integer  "ratio"
+    t.integer  "caldariStationTypeID"
+    t.integer  "minmatarStationTypeID"
+    t.integer  "amarrStationTypeID"
+    t.integer  "gallenteStationTypeID"
+    t.integer  "joveStationTypeID"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
+
+  create_table "staServices", :primary_key => "serviceID", :force => true do |t|
+    t.string   "serviceName", :limit => 100
+    t.string   "description", :limit => 1000
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "staStationTypes", :primary_key => "stationTypeID", :force => true do |t|
+    t.float    "dockEntryX"
+    t.float    "dockEntryY"
+    t.float    "dockEntryZ"
+    t.float    "dockOrientationX"
+    t.float    "dockOrientationY"
+    t.float    "dockOrientationZ"
+    t.integer  "operationID"
+    t.integer  "officeSlots"
+    t.float    "reprocessingEfficiency"
+    t.integer  "conquerable"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  create_table "stastations", :primary_key => "stationID", :force => true do |t|
+    t.integer  "security",                 :limit => 2
+    t.float    "dockingCostPerVolume"
+    t.float    "maxShipVolumeDockable"
+    t.integer  "officeRentalCost"
+    t.integer  "operationID"
+    t.integer  "stationTypeID"
+    t.integer  "corporationID"
+    t.integer  "solarSystemID"
+    t.integer  "constellationID"
+    t.integer  "regionID"
+    t.string   "stationName",              :limit => 100
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.float    "reprocessingEfficiency"
+    t.float    "reprocessingStationsTake"
+    t.integer  "reprocessingHangarFlag"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "stastations", ["constellationID"], :name => "staStations_IX_constellation"
+  add_index "stastations", ["corporationID"], :name => "staStations_IX_corporation"
+  add_index "stastations", ["operationID"], :name => "staStations_IX_operation"
+  add_index "stastations", ["regionID"], :name => "staStations_IX_region"
+  add_index "stastations", ["solarSystemID"], :name => "staStations_IX_system"
+  add_index "stastations", ["stationTypeID"], :name => "staStations_IX_type"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
