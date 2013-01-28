@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127224312) do
+ActiveRecord::Schema.define(:version => 20130127230455) do
 
   create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
     t.string "agentType", :limit => 50
@@ -43,6 +43,66 @@ ActiveRecord::Schema.define(:version => 20130127224312) do
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
     t.integer  "usage_count",  :default => 0
+  end
+
+  create_table "chrAncestries", :primary_key => "ancestryID", :force => true do |t|
+    t.string  "ancestryName",     :limit => 100
+    t.integer "bloodlineID"
+    t.string  "description",      :limit => 1000
+    t.integer "perception"
+    t.integer "willpower"
+    t.integer "charisma"
+    t.integer "memory"
+    t.integer "intelligence"
+    t.integer "iconID"
+    t.string  "shortDescription", :limit => 500
+  end
+
+  create_table "chrAttributes", :primary_key => "attributeID", :force => true do |t|
+    t.string  "attributeName",    :limit => 100
+    t.string  "description",      :limit => 1000
+    t.integer "iconID"
+    t.string  "shortDescription", :limit => 500
+    t.string  "notes",            :limit => 500
+  end
+
+  create_table "chrBloodlines", :primary_key => "bloodlineID", :force => true do |t|
+    t.string  "bloodlineName",          :limit => 100
+    t.integer "raceID"
+    t.string  "description",            :limit => 1000
+    t.string  "maleDescription",        :limit => 1000
+    t.string  "femaleDescription",      :limit => 1000
+    t.integer "shipTypeID"
+    t.integer "corporationID"
+    t.integer "perception"
+    t.integer "willpower"
+    t.integer "charisma"
+    t.integer "memory"
+    t.integer "intelligence"
+    t.integer "iconID"
+    t.string  "shortDescription",       :limit => 500
+    t.string  "shortMaleDescription",   :limit => 500
+    t.string  "shortFemaleDescription", :limit => 500
+  end
+
+  create_table "chrFactions", :primary_key => "factionID", :force => true do |t|
+    t.string  "factionName",          :limit => 100
+    t.string  "description",          :limit => 1000
+    t.integer "raceIDs"
+    t.integer "solarSystemID"
+    t.integer "corporationID"
+    t.float   "sizeFactor"
+    t.integer "stationCount",         :limit => 2
+    t.integer "stationSystemCount",   :limit => 2
+    t.integer "militiaCorporationID"
+    t.integer "iconID"
+  end
+
+  create_table "chrRaces", :primary_key => "raceID", :force => true do |t|
+    t.string  "raceName",         :limit => 100
+    t.string  "description",      :limit => 1000
+    t.integer "iconID"
+    t.string  "shortDescription", :limit => 500
   end
 
   create_table "crtCategories", :primary_key => "categoryID", :force => true do |t|
