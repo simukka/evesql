@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128013613) do
+ActiveRecord::Schema.define(:version => 20130128023024) do
 
   create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
     t.string "agentType", :limit => 50
@@ -469,6 +469,133 @@ ActiveRecord::Schema.define(:version => 20130128013613) do
   add_index "invuniquenames", ["groupID", "itemName"], :name => "invUniqueNames_IX_GroupName"
   add_index "invuniquenames", ["itemName"], :name => "invUniqueNames_UQ", :unique => true
 
+  create_table "mapCelestialStatistics", :primary_key => "celestialID", :force => true do |t|
+    t.float    "temperature"
+    t.string   "spectralClass",  :limit => 10
+    t.float    "luminosity"
+    t.float    "age"
+    t.float    "life"
+    t.float    "orbitRadius"
+    t.float    "eccentricity"
+    t.float    "massDust"
+    t.float    "massGas"
+    t.integer  "fragmented"
+    t.float    "density"
+    t.float    "surfaceGravity"
+    t.float    "escapeVelocity"
+    t.float    "orbitPeriod"
+    t.float    "rotationRate"
+    t.integer  "locked"
+    t.float    "pressure"
+    t.float    "radius"
+    t.float    "mass"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "mapJumps", :primary_key => "stargateID", :force => true do |t|
+    t.integer  "celestialID"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "mapLandmarks", :primary_key => "landmarkID", :force => true do |t|
+    t.string   "landmarkName", :limit => 100
+    t.string   "description",  :limit => 7000
+    t.integer  "locationID"
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.float    "radius"
+    t.integer  "iconID"
+    t.integer  "importance"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "mapLocationScenes", :primary_key => "locationID", :force => true do |t|
+    t.integer  "graphicID"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mapLocationWormholeClasses", :primary_key => "locationID", :force => true do |t|
+    t.integer  "wormholeClassID"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "mapRegionJumps", :id => false, :force => true do |t|
+    t.integer  "fromRegionID", :null => false
+    t.integer  "toRegionID",   :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "mapRegions", :primary_key => "regionID", :force => true do |t|
+    t.string   "regionName", :limit => 100
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.float    "xMin"
+    t.float    "xMax"
+    t.float    "yMin"
+    t.float    "yMax"
+    t.float    "zMin"
+    t.float    "zMax"
+    t.integer  "factionID"
+    t.float    "radius"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "mapUniverse", :primary_key => "universeID", :force => true do |t|
+    t.string   "universeName", :limit => 100
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.float    "xMin"
+    t.float    "xMax"
+    t.float    "yMin"
+    t.float    "yMax"
+    t.float    "zMin"
+    t.float    "zMax"
+    t.float    "radius"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "mapconstellationjumps", :id => false, :force => true do |t|
+    t.integer  "fromRegionID"
+    t.integer  "fromConstellationID", :null => false
+    t.integer  "toConstellationID",   :null => false
+    t.integer  "toRegionID"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "mapconstellationjumps", ["fromRegionID"], :name => "mapConstellationJumps_IX_fromRe"
+
+  create_table "mapconstellations", :primary_key => "constellationID", :force => true do |t|
+    t.integer  "regionID"
+    t.string   "constellationName", :limit => 100
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.float    "xMin"
+    t.float    "xMax"
+    t.float    "yMin"
+    t.float    "yMax"
+    t.float    "zMin"
+    t.float    "zMax"
+    t.integer  "factionID"
+    t.float    "radius"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "mapconstellations", ["regionID"], :name => "mapConstellations_IX_region"
+
   create_table "mapdenormalize", :primary_key => "itemID", :force => true do |t|
     t.integer  "typeID"
     t.integer  "groupID"
@@ -495,6 +622,54 @@ ActiveRecord::Schema.define(:version => 20130128013613) do
   add_index "mapdenormalize", ["orbitID"], :name => "mapDenormalize_IX_orbit"
   add_index "mapdenormalize", ["regionID"], :name => "mapDenormalize_IX_region"
   add_index "mapdenormalize", ["solarSystemID"], :name => "mapDenormalize_IX_system"
+
+  create_table "mapsolarsystemjumps", :id => false, :force => true do |t|
+    t.integer  "fromRegionID"
+    t.integer  "fromConstellationID"
+    t.integer  "fromSolarSystemID",   :null => false
+    t.integer  "toSolarSystemID",     :null => false
+    t.integer  "toConstellationID"
+    t.integer  "toRegionID"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "mapsolarsystemjumps", ["fromConstellationID"], :name => "mapSolarSystemJumps_IX_fromCons"
+  add_index "mapsolarsystemjumps", ["fromRegionID"], :name => "mapSolarSystemJumps_IX_fromRegi"
+
+  create_table "mapsolarsystems", :primary_key => "solarSystemID", :force => true do |t|
+    t.integer  "regionID"
+    t.integer  "constellationID"
+    t.string   "solarSystemName", :limit => 100
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.float    "xMin"
+    t.float    "xMax"
+    t.float    "yMin"
+    t.float    "yMax"
+    t.float    "zMin"
+    t.float    "zMax"
+    t.float    "luminosity"
+    t.integer  "border"
+    t.integer  "fringe"
+    t.integer  "corridor"
+    t.integer  "hub"
+    t.integer  "international"
+    t.integer  "regional"
+    t.integer  "constellation"
+    t.float    "security"
+    t.integer  "factionID"
+    t.float    "radius"
+    t.integer  "sunTypeID"
+    t.string   "securityClass",   :limit => 2
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "mapsolarsystems", ["constellationID"], :name => "mapSolarSystems_IX_constellation"
+  add_index "mapsolarsystems", ["regionID"], :name => "mapSolarSystems_IX_region"
+  add_index "mapsolarsystems", ["security"], :name => "mapSolarSystems_IX_security"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
