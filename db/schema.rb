@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128023024) do
+ActiveRecord::Schema.define(:version => 20130128030540) do
 
   create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
     t.string "agentType", :limit => 50
@@ -670,6 +670,29 @@ ActiveRecord::Schema.define(:version => 20130128023024) do
   add_index "mapsolarsystems", ["constellationID"], :name => "mapSolarSystems_IX_constellation"
   add_index "mapsolarsystems", ["regionID"], :name => "mapSolarSystems_IX_region"
   add_index "mapsolarsystems", ["security"], :name => "mapSolarSystems_IX_security"
+
+  create_table "planetSchematics", :primary_key => "schematicID", :force => true do |t|
+    t.string   "schematicName"
+    t.integer  "cycleTime"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "planetSchematicsPinMap", :id => false, :force => true do |t|
+    t.integer  "schematicID", :limit => 2, :null => false
+    t.integer  "pinTypeID",                :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "planetSchematicsTypeMap", :id => false, :force => true do |t|
+    t.integer  "schematicID", :limit => 2, :null => false
+    t.integer  "typeID",                   :null => false
+    t.integer  "quantity",    :limit => 2
+    t.integer  "isInput"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
