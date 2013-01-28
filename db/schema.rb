@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127230455) do
+ActiveRecord::Schema.define(:version => 20130128004610) do
 
   create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
     t.string "agentType", :limit => 50
@@ -103,6 +103,63 @@ ActiveRecord::Schema.define(:version => 20130127230455) do
     t.string  "description",      :limit => 1000
     t.integer "iconID"
     t.string  "shortDescription", :limit => 500
+  end
+
+  create_table "crpActivities", :primary_key => "activityID", :force => true do |t|
+    t.string "activityName", :limit => 100
+    t.string "description",  :limit => 1000
+  end
+
+  create_table "crpNPCCorporationDivisions", :id => false, :force => true do |t|
+    t.integer "corporationID", :null => false
+    t.integer "divisionID",    :null => false
+    t.integer "size"
+  end
+
+  create_table "crpNPCCorporationResearchFields", :id => false, :force => true do |t|
+    t.integer "skillID",       :null => false
+    t.integer "corporationID", :null => false
+  end
+
+  create_table "crpNPCCorporationTrades", :id => false, :force => true do |t|
+    t.integer "corporationID", :null => false
+    t.integer "typeID",        :null => false
+  end
+
+  create_table "crpNPCCorporations", :primary_key => "corporationID", :force => true do |t|
+    t.string  "size",               :limit => 1
+    t.string  "extent",             :limit => 1
+    t.integer "solarSystemID"
+    t.integer "investorID1"
+    t.integer "investorShares1"
+    t.integer "investorID2"
+    t.integer "investorShares2"
+    t.integer "investorID3"
+    t.integer "investorShares3"
+    t.integer "investorID4"
+    t.integer "investorShares4"
+    t.integer "friendID"
+    t.integer "enemyID"
+    t.integer "publicShares",       :limit => 8
+    t.integer "initialPrice"
+    t.float   "minSecurity"
+    t.integer "scattered"
+    t.integer "fringe"
+    t.integer "corridor"
+    t.integer "hub"
+    t.integer "border"
+    t.integer "factionID"
+    t.float   "sizeFactor"
+    t.integer "stationCount",       :limit => 2
+    t.integer "stationSystemCount", :limit => 2
+    t.string  "description",        :limit => 4000
+    t.integer "iconID"
+  end
+
+  create_table "crpNPCDivisions", :primary_key => "divisionID", :force => true do |t|
+    t.string "divisionName", :limit => 100
+    t.string "description",  :limit => 1000
+    t.string "leaderType",   :limit => 100
   end
 
   create_table "crtCategories", :primary_key => "categoryID", :force => true do |t|
