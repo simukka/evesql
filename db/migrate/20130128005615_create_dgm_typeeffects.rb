@@ -4,6 +4,7 @@ class CreateDgmTypeeffects < ActiveRecord::Migration
       t.integer "typeID",                 :null => false
       t.integer "effectID",  :limit => 2, :null => false
       t.integer "isDefault"
+      t.timestamps
     end
   end
 end

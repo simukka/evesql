@@ -11,6 +11,7 @@ class CreateChrFactions < ActiveRecord::Migration
       t.integer "stationSystemCount",   :limit => 2
       t.integer "militiaCorporationID"
       t.integer "iconID"
+      t.timestamps
     end
   end
 end

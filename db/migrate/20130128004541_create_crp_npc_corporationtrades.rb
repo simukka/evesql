@@ -3,6 +3,7 @@ class CreateCrpNpcCorporationtrades < ActiveRecord::Migration
     create_table "crpNPCCorporationTrades", :id => false, :force => true do |t|
       t.integer "corporationID", :null => false
       t.integer "typeID",        :null => false
+      t.timestamps
     end
   end
 end

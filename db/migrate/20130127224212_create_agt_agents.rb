@@ -8,6 +8,7 @@ class CreateAgtAgents < ActiveRecord::Migration
       t.integer "quality",       :limit => 2
       t.integer "agentTypeID"
       t.integer "isLocator"
+      t.timestamps
     end
 
     add_index "agtagents", ["corporationID"], :name => "agtAgents_IX_corporation"

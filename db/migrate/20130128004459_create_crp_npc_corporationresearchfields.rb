@@ -3,6 +3,7 @@ class CreateCrpNpcCorporationresearchfields < ActiveRecord::Migration
     create_table "crpNPCCorporationResearchFields", :id => false, :force => true do |t|
       t.integer "skillID",       :null => false
       t.integer "corporationID", :null => false
+      t.timestamps
     end
   end
 end

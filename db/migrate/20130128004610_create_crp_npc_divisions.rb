@@ -4,6 +4,7 @@ class CreateCrpNpcDivisions < ActiveRecord::Migration
       t.string "divisionName", :limit => 100
       t.string "description",  :limit => 1000
       t.string "leaderType",   :limit => 100
+      t.timestamps
     end
   end
 end

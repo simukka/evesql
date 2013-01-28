@@ -6,6 +6,7 @@ class CreateChrAttributes < ActiveRecord::Migration
       t.integer "iconID"
       t.string  "shortDescription", :limit => 500
       t.string  "notes",            :limit => 500
+      t.timestamps
     end
   end
 end

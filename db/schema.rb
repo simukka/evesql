@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128005615) do
+ActiveRecord::Schema.define(:version => 20130128010207) do
 
   create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
     t.string "agentType", :limit => 50
@@ -261,6 +261,28 @@ ActiveRecord::Schema.define(:version => 20130128005615) do
     t.integer "typeID",                 :null => false
     t.integer "effectID",  :limit => 2, :null => false
     t.integer "isDefault"
+  end
+
+  create_table "eveGraphics", :primary_key => "graphicID", :force => true do |t|
+    t.string  "graphicFile", :limit => 500,                :null => false
+    t.text    "description"
+    t.integer "obsolete",                   :default => 0, :null => false
+    t.string  "graphicType", :limit => 100
+    t.integer "collidable"
+    t.integer "explosionID"
+    t.integer "directoryID"
+    t.string  "graphicName", :limit => 64,                 :null => false
+  end
+
+  create_table "eveIcons", :primary_key => "iconID", :force => true do |t|
+    t.string "iconFile",    :limit => 500, :null => false
+    t.text   "description"
+  end
+
+  create_table "eveUnits", :primary_key => "unitID", :force => true do |t|
+    t.string "unitName",    :limit => 100
+    t.string "displayName", :limit => 50
+    t.string "description", :limit => 1000
   end
 
   create_table "invGroups", :primary_key => "groupID", :force => true do |t|

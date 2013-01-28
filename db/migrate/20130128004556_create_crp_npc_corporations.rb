@@ -28,6 +28,7 @@ class CreateCrpNpcCorporations < ActiveRecord::Migration
       t.integer "stationSystemCount", :limit => 2
       t.string  "description",        :limit => 4000
       t.integer "iconID"
+      t.timestamps
     end
   end
 end

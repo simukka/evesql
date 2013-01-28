@@ -5,6 +5,7 @@ class CreateChrRaces < ActiveRecord::Migration
       t.string  "description",      :limit => 1000
       t.integer "iconID"
       t.string  "shortDescription", :limit => 500
+      t.timestamps
     end
   end
 end

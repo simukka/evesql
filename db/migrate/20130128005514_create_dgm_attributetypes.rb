@@ -11,6 +11,7 @@ class CreateDgmAttributetypes < ActiveRecord::Migration
       t.integer "stackable"
       t.integer "highIsGood"
       t.integer "categoryID"
+      t.timestamps
     end
   end
 end

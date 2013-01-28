@@ -5,6 +5,7 @@ class CreateCrtRelationships < ActiveRecord::Migration
       t.integer "parentTypeID"
       t.integer "parentLevel"
       t.integer "childID"
+      t.timestamps
     end
 
     add_index "crtRelationships", ["childID"], :name => "crtRelationships_IX_child"

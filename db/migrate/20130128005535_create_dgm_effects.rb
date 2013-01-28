@@ -27,6 +27,7 @@ class CreateDgmEffects < ActiveRecord::Migration
       t.integer "npcUsageChanceAttributeID",      :limit => 2
       t.integer "npcActivationChanceAttributeID", :limit => 2
       t.integer "fittingUsageChanceAttributeID",  :limit => 2
+      t.timestamps
     end
   end
 end

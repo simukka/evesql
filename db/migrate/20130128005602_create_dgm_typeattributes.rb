@@ -5,6 +5,7 @@ class CreateDgmTypeattributes < ActiveRecord::Migration
       t.integer "attributeID", :limit => 2, :null => false
       t.integer "valueInt"
       t.float   "valueFloat"
+      t.timestamps
     end
   end
 end

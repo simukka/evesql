@@ -17,6 +17,7 @@ class CreateChrBloodlines < ActiveRecord::Migration
       t.string  "shortDescription",       :limit => 500
       t.string  "shortMaleDescription",   :limit => 500
       t.string  "shortFemaleDescription", :limit => 500
+      t.timestamps
     end
   end
 end

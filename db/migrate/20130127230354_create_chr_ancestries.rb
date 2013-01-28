@@ -11,6 +11,7 @@ class CreateChrAncestries < ActiveRecord::Migration
       t.integer "intelligence"
       t.integer "iconID"
       t.string  "shortDescription", :limit => 500
+      t.timestamps
     end
   end
 end
