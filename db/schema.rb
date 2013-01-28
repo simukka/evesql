@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128004610) do
+ActiveRecord::Schema.define(:version => 20130128005615) do
 
   create_table "agtAgentTypes", :primary_key => "agentTypeID", :force => true do |t|
     t.string "agentType", :limit => 50
@@ -202,6 +202,66 @@ ActiveRecord::Schema.define(:version => 20130128004610) do
 
   add_index "crtrelationships", ["childID"], :name => "crtRelationships_IX_child"
   add_index "crtrelationships", ["parentID"], :name => "crtRelationships_IX_parent"
+
+  create_table "dgmAttributeCategories", :primary_key => "categoryID", :force => true do |t|
+    t.string "categoryName",        :limit => 50
+    t.string "categoryDescription", :limit => 200
+  end
+
+  create_table "dgmAttributeTypes", :primary_key => "attributeID", :force => true do |t|
+    t.string  "attributeName", :limit => 100
+    t.string  "description",   :limit => 1000
+    t.integer "iconID"
+    t.float   "defaultValue"
+    t.integer "published"
+    t.string  "displayName",   :limit => 100
+    t.integer "unitID"
+    t.integer "stackable"
+    t.integer "highIsGood"
+    t.integer "categoryID"
+  end
+
+  create_table "dgmEffects", :primary_key => "effectID", :force => true do |t|
+    t.string  "effectName",                     :limit => 400
+    t.integer "effectCategory",                 :limit => 2
+    t.integer "preExpression"
+    t.integer "postExpression"
+    t.string  "description",                    :limit => 1000
+    t.string  "guid",                           :limit => 60
+    t.integer "iconID"
+    t.integer "isOffensive"
+    t.integer "isAssistance"
+    t.integer "durationAttributeID",            :limit => 2
+    t.integer "trackingSpeedAttributeID",       :limit => 2
+    t.integer "dischargeAttributeID",           :limit => 2
+    t.integer "rangeAttributeID",               :limit => 2
+    t.integer "falloffAttributeID",             :limit => 2
+    t.integer "disallowAutoRepeat"
+    t.integer "published"
+    t.string  "displayName",                    :limit => 100
+    t.integer "isWarpSafe"
+    t.integer "rangeChance"
+    t.integer "electronicChance"
+    t.integer "propulsionChance"
+    t.integer "distribution"
+    t.string  "sfxName",                        :limit => 20
+    t.integer "npcUsageChanceAttributeID",      :limit => 2
+    t.integer "npcActivationChanceAttributeID", :limit => 2
+    t.integer "fittingUsageChanceAttributeID",  :limit => 2
+  end
+
+  create_table "dgmTypeAttributes", :id => false, :force => true do |t|
+    t.integer "typeID",                   :null => false
+    t.integer "attributeID", :limit => 2, :null => false
+    t.integer "valueInt"
+    t.float   "valueFloat"
+  end
+
+  create_table "dgmTypeEffects", :id => false, :force => true do |t|
+    t.integer "typeID",                 :null => false
+    t.integer "effectID",  :limit => 2, :null => false
+    t.integer "isDefault"
+  end
 
   create_table "invGroups", :primary_key => "groupID", :force => true do |t|
     t.integer "categoryID"
