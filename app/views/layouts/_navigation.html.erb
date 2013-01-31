@@ -1,4 +1,9 @@
 <%= link_to "Eve SQL", root_path, :class => 'brand' %>
+<ul class="nav">
+  <li><%= link_to 'API List', root_path(:anchor => 'api-overview') %></li>
+  <li><%= link_to 'Getting Started', root_path(:anchor => 'getting-started') %></li>
+  <li><%= link_to 'About', root_path(:anchor => 'about') %></li>
+</ul>
 <ul class="nav pull-right">
   <% if user_signed_in? %>
   <li class="divider-vertical"></li>

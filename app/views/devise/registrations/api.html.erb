@@ -1,15 +1,11 @@
-<div class="span8 offset2">
-  <div class="page-header">
-    <h3>API</h3>
-  </div>
-  <h4>Access</h4>
-  <div class="control-group">
-    <label class="control-label" for="token">Token</label>
-    <div class="controls">
-      <pre class="">?token=<%= @user.apikey.access_token %></pre>
-    </div>
-  </div>
-  <div class="row-fluid">
+<div class="row-fluid">
+  <ul class="nav nav-tabs">
+    <li><%= link_to 'Account', account_edit_path %></li>
+    <li class="active"><%= link_to 'API', account_api_path %></li>
+  </ul>
+  <h4>Access Token</h4>
+  <pre class="">?token=<%= @user.apikey.access_token %></pre>
+  <div class="row-fluid mt15">
     <h4>Usage</h4>
     <div class="well well-small">
       Current: <b><%= @current_usage %></b> - Max: <b><%= @max_usage %></b>

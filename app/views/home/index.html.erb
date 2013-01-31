@@ -1,17 +1,18 @@
 <div class="page-header">
-  <h2>Eve SQL <small>High Availability EVE Database</small><small class="mt15 pull-right"><b>Current Dataset:</b> Incursion 1.2</small></h2>
+  <h2>Eve SQL <small>High Availability EVE Database</small><small class="mt15 pull-right"><b>Current Dataset:</b> Retribution 1.0.7</small></h2>
 </div>
-<div class="row-fluid">
+<div class="row-fluid mb200">
   <div class="span9">
-    <p class="lead">We do all the heavy lifting so your app doesn't have to. Eve SQL provides a responsive public API to the current Eve database for quick and easy information retrival.</p>
+    <p class="lead">We do all the heavy lifting so your App doesn't have to. Eve SQL provides a responsive public API to the current EVE database for quick and easy information retrieval.</p>
   </div>
   <div class="span3">
-    <%= link_to 'Get Started', register_path, :class=>'btn btn-large btn-primary btn-block' %>
+    <%= link_to 'Get Started', root_path(:anchor=>'getting-started'), :class=>'btn btn-large btn-primary btn-block' %>
   </div>
 </div>
-<div class="row-fluid" id="api-overview">
-  <div class="page-header">
-    <h3>APIs<h3>
+<div class="row-fluid mb200" id="api-overview">
+  <div class="page-header mt60">
+    <h3>API List<h3>
+    <p class="lead">Data endpoints are continually being added on a ongoing basis. Each table in the EVE database is carefully inspected, mapped, and imported into the system.</p>
   </div>
   <ul class="nav nav-pills" id="api-status">
     <li class="active"><a href="#" data-api="all">All</a></li>
@@ -195,12 +196,63 @@
     </div>
   </div>
 </div>
-<div class="row-fluid" id="about">
-  <div class="page-header">
-    <h3>About<h3>
+<div class="row-fluid mb200" id="getting-started">
+  <div class="page-header mt60">
+    <h3>Getting Started<h3>
+    <p class="lead">This will be a piece of cake.</p>
   </div>
-  <h5>CCP Legal Notice</h5>
-    <div class="well well-small">
-      <p>EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP hf. is not in any way affiliated with, Eve SQL. CCP is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.</p>
+  <div class="row-fluid mt15">
+    <div class="span6">
+      <div class="well well-small <%= user_signed_in? ? "muted":"" %>">
+        <% unless user_signed_in? %>
+          <h4>1. Register with Us</h4>
+          <p>You will need to register an account with us before you can access any of the APIs.</p>
+          <%= link_to 'Register Now', register_path, :class=>"btn btn-primary btn-block" %>
+        <% else %>
+          <h4><i class="icon-ok"></i> Register with Us</h4>
+          <p>You will need to register an account with us before you can access any of the APIs.</p>
+          <%= link_to 'Register Now', '#getting-started', :class=>"btn btn btn-block disabled" %>
+        <% end %>
+      </div>
     </div>
+    <div class="span6">
+      <div class="well well-small <%= user_signed_in? ? "":"muted" %>">
+        <% if user_signed_in? %>
+          <h4>2. Get your Access Token</h4>
+          <p>Each account is given a unique access token that is required with each API call.</p>
+          <%= link_to 'API Access Token', account_api_path, :class=>"btn btn-primary btn-block" %>
+        <% else %>
+          <h4>2. Get your Access Token</h4>
+          <p>Each account is given a unique access token that is required with each API call.</p>
+          <%= link_to 'API Access Token', '#getting-started', :class=>"btn btn-block disabled" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="well well-small <%= user_signed_in? ? "":"muted" %>">
+      <h4>3. Perform your first API call</h4>
+      <p>Copy and paste the below code into your <a href="http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers" target="_blank"> javascript console</a> or use CURL.</p>
+      <pre>
+      $.getJSON('http://evesql.com/api/v1/inventory/type/233.js','token=5619fee62d6c80d1212a402fc2c1c528',function(data){
+        alert(data);
+      });</pre>
+    </div>
+  </div>
+</div>
+<div class="row-fluid mb200" id="about">
+  <div class="page-header mt60">
+    <h3>About<h3>
+      <p class="lead">Information regarding infrastructure, uptime, and architecture is coming shortly.</p>
+  </div>
+  <div class="row-fluid mt15">
+    <h4>Features Requests and Bug Reports</h4>
+    <p>Please report any feature request or bug reports at <a href="https://github.com/evesql/prod/issues" target="_blank">https://github.com/evesql/prod/issues</a></p>
+  </div>
+  <div class="row-fluid mt15">
+    <h4>CCP Legal Notice</h4>
+    <div class="well well-small">
+      <p>EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. CCP hf. has granted permission to Eve SQL to use EVE Online and all associated logos and designs for promotional and information purposes on its website but does not endorse, and is not in any way affiliated with, Eve SQL. CCP is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.</p>
+    </div>
+  </div>
 </div>

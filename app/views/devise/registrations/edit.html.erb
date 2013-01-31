@@ -1,17 +1,18 @@
-<div class="span8 offset2">
-  <div class="page-header">
-    <h3>Account</h3>
-    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
-        <%= f.error_notification %>
-        <%= f.input :name, :autofocus => true %>
-        <%= f.input :email, :required => true %>
-        <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-        <%= f.input :password_confirmation, :required => false %>
-        <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-        <div class="well well-small">
-        <%= link_to "Delete Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class=>"btn" %>
-        <%= f.button :submit, 'Update', :class => 'btn-primary pull-right' %>
-        </div>
-      <% end %>
-  </div>
+<div class="row-fluid">
+  <ul class="nav nav-tabs">
+    <li class="active"><%= link_to 'Account', account_edit_path %></li>
+    <li><%= link_to 'API', account_api_path %></li>
+  </ul>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name, :autofocus => true %>
+    <%= f.input :email, :required => true %>
+    <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+    <%= f.input :password_confirmation, :required => false %>
+    <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+    <div class="well well-small">
+    <%= link_to "Delete Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class=>"btn" %>
+    <%= f.button :submit, 'Update', :class => 'btn-primary pull-right' %>
+    </div>
+  <% end %>
 </div>
