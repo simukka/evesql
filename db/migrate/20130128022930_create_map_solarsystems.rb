@@ -29,8 +29,8 @@ class CreateMapSolarsystems < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "mapsolarsystems", ["constellationID"], :name => "mapSolarSystems_IX_constellation"
-    add_index "mapsolarsystems", ["regionID"], :name => "mapSolarSystems_IX_region"
-    add_index "mapsolarsystems", ["security"], :name => "mapSolarSystems_IX_security"
+    add_index "mapSolarSystems", ["constellationID"], :name => "mapSolarSystems_IX_constellation"
+    add_index "mapSolarSystems", ["regionID"], :name => "mapSolarSystems_IX_region"
+    add_index "mapSolarSystems", ["security"], :name => "mapSolarSystems_IX_security"
   end
 end

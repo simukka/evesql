@@ -10,6 +10,6 @@ class CreateInvContrabandtypes < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "invcontrabandtypes", ["typeID"], :name => "invContrabandTypes_IX_type"
+    add_index "invContrabandTypes", ["typeID"], :name => "invContrabandTypes_IX_type"
   end
 end

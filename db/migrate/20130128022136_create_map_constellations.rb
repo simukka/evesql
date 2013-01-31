@@ -17,6 +17,6 @@ class CreateMapConstellations < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "mapconstellations", ["regionID"], :name => "mapConstellations_IX_region"
+    add_index "mapConstellations", ["regionID"], :name => "mapConstellations_IX_region"
   end
 end

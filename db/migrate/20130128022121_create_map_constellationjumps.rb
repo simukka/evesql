@@ -8,6 +8,6 @@ class CreateMapConstellationjumps < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "mapconstellationjumps", ["fromRegionID"], :name => "mapConstellationJumps_IX_fromRe"
+    add_index "mapConstellationJumps", ["fromRegionID"], :name => "mapConstellationJumps_IX_fromRe"
   end
 end

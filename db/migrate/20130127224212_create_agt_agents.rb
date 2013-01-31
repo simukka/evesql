@@ -11,7 +11,7 @@ class CreateAgtAgents < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "agtagents", ["corporationID"], :name => "agtAgents_IX_corporation"
-    add_index "agtagents", ["locationID"], :name => "agtAgents_IX_station"
+    add_index "agtAgents", ["corporationID"], :name => "agtAgents_IX_corporation"
+    add_index "agtAgents", ["locationID"], :name => "agtAgents_IX_station"
   end
 end

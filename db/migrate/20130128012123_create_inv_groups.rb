@@ -15,6 +15,6 @@ class CreateInvGroups < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "invgroups", ["categoryID"], :name => "invGroups_IX_category"
+    add_index "invGroups", ["categoryID"], :name => "invGroups_IX_category"
   end
 end

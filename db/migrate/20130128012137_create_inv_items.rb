@@ -9,7 +9,7 @@ class CreateInvItems < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "invitems", ["locationID"], :name => "items_IX_Location"
-    add_index "invitems", ["ownerID", "locationID"], :name => "items_IX_OwnerLocation"
+    add_index "invItems", ["locationID"], :name => "items_IX_Location"
+    add_index "invItems", ["ownerID", "locationID"], :name => "items_IX_OwnerLocation"
   end
 end

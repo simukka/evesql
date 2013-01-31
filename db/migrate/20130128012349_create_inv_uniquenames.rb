@@ -6,7 +6,7 @@ class CreateInvUniquenames < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "invuniquenames", ["groupID", "itemName"], :name => "invUniqueNames_IX_GroupName"
-    add_index "invuniquenames", ["itemName"], :name => "invUniqueNames_UQ", :unique => true
+    add_index "invUniqueNames", ["groupID", "itemName"], :name => "invUniqueNames_IX_GroupName"
+    add_index "invUniqueNames", ["itemName"], :name => "invUniqueNames_UQ", :unique => true
   end
 end

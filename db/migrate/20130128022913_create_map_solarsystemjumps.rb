@@ -10,7 +10,7 @@ class CreateMapSolarsystemjumps < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "mapsolarsystemjumps", ["fromConstellationID"], :name => "mapSolarSystemJumps_IX_fromCons"
-    add_index "mapsolarsystemjumps", ["fromRegionID"], :name => "mapSolarSystemJumps_IX_fromRegi"
+    add_index "mapSolarSystemJumps", ["fromConstellationID"], :name => "mapSolarSystemJumps_IX_fromCons"
+    add_index "mapSolarSystemJumps", ["fromRegionID"], :name => "mapSolarSystemJumps_IX_fromRegi"
   end
 end

@@ -6,6 +6,6 @@ class CreateAgtResearchagents < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index "agtresearchagents", ["typeID"], :name => "agtResearchAgents_IX_type"
+    add_index "agtResearchAgents", ["typeID"], :name => "agtResearchAgents_IX_type"
   end
 end
